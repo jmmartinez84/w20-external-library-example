@@ -1,0 +1,46 @@
+{
+    "id": "pie",
+    "name": "W20 pie fragment",
+
+    "modules": {
+        "content": {
+            "path": "{pie}/modules/content",
+            "autoload": true
+        },
+        "style": {
+            "path": "[css]!{pie}/style/style.css",
+            "autoload": true
+        }
+    },
+
+    "i18n": {
+        "en": ["{pie}/i18n/messages-en.json"],
+        "fr": ["{pie}/i18n/messages-fr.json"]
+    },
+
+    "routes": {
+        "content":{
+            "templateUrl":"{pie}/views/content.html",
+            "controller":"ContentController"
+        }
+    },
+    "requireConfig" : {
+        "paths": {
+            "{angular-bindonce}": "${components-path:bower_components}/angular-bindonce",
+            "{moment}":"${components-path:bower_components}/moment",
+            "{moment-range}":"${components-path:bower_components}/moment-range/lib",
+            "{angular-date-range-picker}": "${components-path:bower_components}/angular-date-range-picker/build"
+        },
+
+        "shim" : {
+              "{angular-bindonce}/bindonce.min": {
+                    "deps": ["{angular}/angular"],
+                   "exports": "bindonce"
+              },
+              "{angular-date-range-picker}/angular-date-range-picker.min": {
+                  "deps": ["{angular-bindonce}/bindonce.min","{moment}/moment","{moment-range}/moment-range"],
+                  "exports": "angular-date-range-picker"
+              }
+          }
+      }
+}
